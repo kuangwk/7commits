@@ -7,6 +7,9 @@ html
         meta(name="viewport" content="width=device-width, initial-scale=1, user-scalable=no")
         script(src="/lib/jquery.js")
     body
+        include ./header.jade
+        include ./sidebar.jade
         block content
+        include ./footer.jade
         script(src="//localhost:35729/livereload.js")
         script(src="/js/main.js")
