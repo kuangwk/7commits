@@ -89,10 +89,13 @@ module.exports = (grunt)->
     jade:
       title:
         options:
-          data: ->
-            require "./src/mocks/index.json"
+          data: (dest, src)->
+            src = src[0]
+            view = (src.match /\/\w+\.jade$/g)[0].replace /(\/)|(\.jade)/g, ""
+            require "./src/mocks/#{view}.json"
         files: 
           "bin/index.html": "src/views/index.jade"
+          "bin/list.html": "src/views/list.jade"
 
   grunt.loadNpmTasks "grunt-contrib-connect"
   grunt.loadNpmTasks "grunt-contrib-clean"
