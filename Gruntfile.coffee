@@ -92,7 +92,7 @@ module.exports = (grunt)->
           data: (dest, src)->
             src = src[0]
             view = (src.match /\/\w+\.jade$/g)[0].replace /(\/)|(\.jade)/g, ""
-            require "./src/mocks/#{view}.json"
+            require "./src/mocks/#{view}.coffee"
         files: 
           "bin/index.html": "src/views/index.jade"
           "bin/list.html": "src/views/list.jade"
