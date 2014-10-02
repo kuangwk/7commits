@@ -8,7 +8,7 @@ module.exports = (grunt)->
       server:
         options:
           port: 3000
-          base: "bin"
+          base: [".", "bin/"]
 
     clean: 
       bin: ["bin"]
