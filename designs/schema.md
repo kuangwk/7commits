@@ -8,10 +8,8 @@ tags: [ObjectId(Tag)]
 
 
 ## Comment
-creator: {
-    email: String
-    name: String
-}
+email: String
+name: String
 content: String
 createTime: Date
 
@@ -20,6 +18,7 @@ createTime: Date
 name: String
 password: String
 avatar: String
+email: String
 signature: String
 introdution: String
 isAdmin: {type: Boolean, default: false}
