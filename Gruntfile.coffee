@@ -60,8 +60,13 @@ module.exports = (grunt)->
 
     less:    
       dev:
-        files:
-          "bin/css/main.css": ["src/css/main.less"]
+        files: [{
+          expand: true
+          cwd: "src/css/"
+          src: ["*.less"]
+          dest: "bin/css"
+          ext: ".css"
+        }]
 
 
     uglify:

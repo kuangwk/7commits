@@ -8,8 +8,11 @@ html
         script(src="/lib/jquery.js")
     body
         include ./header.jade
-        include ./sidebar.jade
-        block content
+        div.wrapper 
+            div.right 
+                include ./sidebar.jade
+            div.left
+                block content
         include ./footer.jade
         script(src="//localhost:35729/livereload.js")
         script(src="/js/main.js")
