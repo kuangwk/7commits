@@ -16,7 +16,7 @@ for i in [1..10]
 
     posts.push post
 
-exports.currentPage = 100
-exports.totalCount = 200
+exports.currentPage = 50
+exports.totalCount = 100
 exports.prefix = "/posts/"
 exports.posts = posts
