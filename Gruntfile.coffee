@@ -92,15 +92,24 @@ module.exports = (grunt)->
                 reporter: "Spec"
 
     jade:
-      title:
+      dev:
         options:
           data: (dest, src)->
             src = src[0]
-            view = (src.match /\/\w+\.jade$/g)[0].replace /(\/)|(\.jade)/g, ""
-            require "./src/mocks/#{view}.coffee"
-        files: 
-          "bin/index.html": "src/views/index.jade"
-          "bin/list.html": "src/views/list.jade"
+            view = (src.match /\/[\w\-]+\.jade$/g)[0].replace /(\/)|(\.jade)/g, ""
+            try
+              console.warn "./src/mocks/#{view}.coffee is not found, use {}. But no worries." 
+              data = require "./src/mocks/#{view}.coffee"
+            catch e
+              data = {}
+            data
+        files: [{
+            expand: true
+            cwd: "src/views/"
+            src: ["*.jade"]
+            dest: "bin/"
+            ext: ".html"
+        }]
 
   grunt.loadNpmTasks "grunt-contrib-connect"
   grunt.loadNpmTasks "grunt-contrib-clean"
