@@ -28,3 +28,8 @@
 ## Tag
 * name: String
 * posts: [ObjectId]
+
+
+## Team
+* introdution: String
+* shortIntrodution: String

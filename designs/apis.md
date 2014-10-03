@@ -1,17 +1,35 @@
 ## Views:
-* / => home
-
-* /posts/<Number:page> => list.jade
-* /posts/tag/<String:Tag>/<Number:page> => list.jade
-* /posts/search/<String:filter(Tag, Keyword, Creator)>/<Number:page> => list.jade
-
-* /post-detail/<Id:PostId> => post-detail.jade
-* /post-edit/<Id:PostId> => post-edit.jade
-* /post-create => post-edit.jade
-* /user-detail/<Id:MemberId> => member-detail.jade
-
-* /admin => (not login) admin-login.jade
-         => (login) admin-dashboard.jade
+* 首页：
+    - / => home.jade
+    - Data: {/*TODO*/}
+* 所有博文列表：
+    - /posts/<Number:page> => list.jade
+    - Data: {/*TODO*/}
+* 标签搜索博文：
+    - /posts/tag/<String:Tag>/<Number:page> => list.jade
+    - Data: {/*TODO*/}
+* 关键字搜索博文：
+    - /posts/search/<String:filter(Tag, Keyword, Creator)>/<Number:page> => list.jade
+    - Data: {/*TODO*/}
+* 博文详细页：
+    - /post-detail/<Id:PostId> => post-detail.jade
+    - Data: {/*TODO*/}
+* 编辑博文：
+    - /post-edit/<Id:PostId> => post-edit.jade
+    - Data: {/*TODO*/}
+* 新建博文：
+    - /post-create => post-edit.jade
+    - Data: {/*TODO*/}
+* 成员详细介绍：
+    - /user-detail/<Id:MemberId> => member-detail.jade
+    - Data: {/*TODO*/}
+* 成员登陆：
+    - /admin => (not login) admin-login.jade
+             => (login) admin-dashboard.jade
+    - Data: {/*TODO*/}
+* 关于：
+    - /about => about.jade
+    - Data: {/*TODO*/}
 
 ## RESTful JSON APIs(Ajax):
 * 新增评论：
@@ -71,3 +89,8 @@
         + 200: {result: "success"}
         + 400: {result: "fail", msg: "Name|Password|email is not correct."}
         + 409: {result: "fail", msg: "Username is existed."}
+* 修改团队介绍
+    - PUT /team
+    - Data: {introduction, shortIntroduction}
+    - Responses:
+        + 200: {result: "success"}
