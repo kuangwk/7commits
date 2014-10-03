@@ -1,6 +1,59 @@
 extends partial/layout
 
 block content
-    ul
-        each blog in list
-            li= blog.content
+    link(rel='stylesheet', href='/css/list.css')
+    ul.posts
+        each post in posts
+            li.post-info
+                h2=post.title
+                img.avatar(src=post.creator.avatar)
+                span=post.creator.name + " " 
+                span=post.createTime
+                p="内容: " + post.content
+                div 标签：
+                    each tag in post.tags
+                        span= tag + " "
+                div
+                    a(href="/posts/" + post._id)="评论(" + post.comments.length + ")"
+                    a(href="/posts/" + post._id) 查看全文
+    div.navigation
+        mixin nav(page)
+            - if(page == currentPage) {
+                li.nav.active: a(href=prefix + page)= page
+            - } else {
+                li.nav: a(href=prefix + page)= page
+            - }
+
+        ul
+            - if (currentPage !== 1) {
+                li.nav: a(href=prefix + (currentPage - 1)) 上一页
+            - }
+
+            +nav(1)
+
+            - var start = currentPage - 4 > 1 ? currentPage - 4: 2;
+            - var end = currentPage + 5 < totalCount ? currentPage + 5: totalCount - 1
+            - if (end - start + 1 < 10) {
+            -    var dist = 10 - (end - start + 1)
+            -    if (start - dist > 1) start -= dist
+            -    else if (end + dist < totalCount) end += dist
+            - }
+
+            - if (start > 2) {
+                li.nav ...
+            - }
+
+            - while(start <= end) {
+                +nav(start)
+                - start++
+            - }
+
+            - if (end < totalCount - 1) {
+                li.nav ...
+            - }
+
+            +nav(totalCount)
+
+            - if (currentPage !== totalCount) {
+                li.nav: a(href=prefix + (currentPage + 1)) 下一页
+            - }

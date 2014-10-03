@@ -5,6 +5,7 @@
 * creator: ObjectId
 * comments: [ObjectId]
 * tags: [ObjectId(Tag)]
+* title: String
 
 
 ## Comment

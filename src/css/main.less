@@ -5,6 +5,10 @@
     margin: 0;
 }
 
+ul, li {
+    list-style: none;
+}
+
 .header {
     box-shadow: 0 0 4px rgba(0,0,0,0.25);
     padding: 25px 60px; 
@@ -22,4 +26,34 @@
     text-align: center;
     // color: #994040;
     color: #D1D1D1;
+}
+
+div.wrapper {
+    overflow: hidden;
+    max-width: 960px;
+    width: 80%;
+    margin: 0 auto;
+    @min-height: 800px;
+    min-height: @min-height;
+    border: 1px solid #ddd;
+    @right-width: 20%;
+    div.right {
+        float: right;
+        width: @right-width;
+        border-left: 1px solid #ddd;
+        min-height: @min-height;
+        .block {
+            min-height: 200px;
+        }
+    }
+    div.left {
+        float: left;
+        width: 99% - @right-width;
+    }
+}
+
+div.footer {
+    width: 100%;
+    min-height: 200px;
+    background-color: #f8f8f8;
 }
