@@ -26,5 +26,5 @@
 
 
 ## Tag
-name: String
-posts: [ObjectId]
+* name: String
+* posts: [ObjectId]
