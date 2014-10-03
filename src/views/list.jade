@@ -5,7 +5,7 @@ block content
     ul.posts
         each post in posts
             li.post-info
-                h2=post.title
+                h2: a(href="/post-detail/" + post._id)= post.title
                 img.avatar(src=post.creator.avatar)
                 span=post.creator.name + " " 
                 span=post.createTime
@@ -14,8 +14,8 @@ block content
                     each tag in post.tags
                         span= tag + " "
                 div
-                    a(href="/posts/" + post._id)="评论(" + post.comments.length + ")"
-                    a(href="/posts/" + post._id) 查看全文
+                    a(href="/post-detail/" + post._id)="评论(" + post.comments.length + ")"
+                    a(href="/post-detail/" + post._id) 查看全文
     div.navigation
         mixin nav(page)
             - if(page == currentPage) {
