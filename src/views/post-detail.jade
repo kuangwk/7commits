@@ -1,0 +1,37 @@
+extends partial/layout
+
+block content
+    link(rel='stylesheet', href='/css/post-detail.css')
+    h1= post.title
+    div.info 
+        img.avatar(src=post.creator.avatar)
+        =post.creator.name + " " + post.editTime
+    div.tags 标签：
+        each tag in post.tags
+            span.tag #{tag} 
+    hr
+    div.content !{post.content}
+    hr
+    div#comments-wrapper Comments(#{post.comments.length}):
+        div.comments-creator
+            div.input
+                span.name Name:
+                input.name
+            div.input
+                span.email Email:
+                input.email(type="email")
+            div.input
+                span.content Content:
+                textarea.content
+            button.submit.
+                评论
+        ul.comments
+            each comment in post.comments
+                li.comment
+                    div.info
+                        span= comment.name + " "
+                        span= comment.createTime + " "
+                    p= comment.content
+                    hr
+        div.load-more: a(href="#") Load More.
+
