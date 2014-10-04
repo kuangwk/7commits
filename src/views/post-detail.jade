@@ -12,7 +12,7 @@ block content
     hr
     div.content !{post.content}
     hr
-    div#comments-wrapper Comments(#{post.comments.length}):
+    div#comments-wrapper Comments(#{post.commentsCount}):
         div.comments-creator
             div.input
                 span.name Name:
@@ -26,12 +26,5 @@ block content
             button.submit.
                 评论
         ul.comments
-            each comment in post.comments
-                li.comment
-                    div.info
-                        span= comment.name + " "
-                        span= comment.createTime + " "
-                    p= comment.content
-                    hr
         div.load-more: a(href="#") Load More.
-
+    script(src="/js/post-detail.js")

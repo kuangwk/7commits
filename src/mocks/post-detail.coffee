@@ -36,6 +36,7 @@ post = {
         {name: "Jerry", content: "This is every good! I love it!!", createTime: "2014-09-23"}
         {name: "Harry", content: "No, this sucks. There flaws everywhere.", createTime: "2014-08-09"}
     ]
+    commentsCount: 100
     tags: ["hot", "girl"]
 }
 

@@ -30,6 +30,7 @@
     "grunt-contrib-jade": "~0.13.0"
   },
   "dependencies": {
-    "marked": "~0.3.2"
+    "marked": "~0.3.2",
+    "handlebars": "~2.0.0"
   }
 }
