@@ -34,7 +34,7 @@
 ## RESTful JSON APIs(Ajax):
 * 新增评论：
     - POST /comments
-    - Data: {email, name, content}
+    - Data: {email, name, content [comment_id]} // 如果是回复性的评论，需要提供要回复的comment的id
     - Responses:
         + 200: {result: "success"}
         + 400: {result: "fail", msg: "email|name|content is not correct"}
