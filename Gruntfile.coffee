@@ -10,6 +10,12 @@ module.exports = (grunt)->
           port: 3000
           base: [".", "bin/"]
 
+    express: 
+      server: 
+        options:
+          opts: ['node_modules/coffee-script/bin/coffee']
+          script: './mock-server.coffee'
+
     clean: 
       bin: ["bin"]
       dist: ["dist"]
@@ -58,6 +64,15 @@ module.exports = (grunt)->
         ]
         tasks: ["browserify", "less", "jade", "mocha"]
 
+      server: 
+        options:
+          livereload: true
+          spawn: false
+        files: [
+          "mock-server.coffee"
+        ]
+        tasks: ["express:server"]
+
     less:    
       dev:
         files: [{
@@ -98,9 +113,9 @@ module.exports = (grunt)->
             src = src[0]
             view = (src.match /\/[\w\-]+\.jade$/g)[0].replace /(\/)|(\.jade)/g, ""
             try
-              console.warn "./src/mocks/#{view}.coffee is not found, use {}. But no worries." 
               data = require "./src/mocks/#{view}.coffee"
             catch e
+              console.warn "./src/mocks/#{view}.coffee is not found, use {}. But no worries." 
               data = {}
             data
         files: [{
@@ -121,14 +136,14 @@ module.exports = (grunt)->
   grunt.loadNpmTasks "grunt-mocha"
   grunt.loadNpmTasks "grunt-contrib-copy"
   grunt.loadNpmTasks "grunt-contrib-jade"
+  grunt.loadNpmTasks "grunt-express-server"
 
   grunt.registerTask "default", ->
     grunt.task.run [
-      "connect"
+      'express:server'
       "clean:bin"
       "browserify"
       "less"
-      "jade"
       "mocha"
       "watch"
     ]
