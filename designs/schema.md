@@ -6,6 +6,7 @@
 * comments: [ObjectId]
 * tags: [ObjectId(Tag)]
 * title: String
+* isPublic: Boolean
 
 
 ## Comment
@@ -13,6 +14,7 @@
 * name: String
 * content: String
 * createTime: Date
+* isReply: Boolean
 
 
 ## Member
