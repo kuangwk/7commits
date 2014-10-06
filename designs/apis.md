@@ -21,7 +21,7 @@
     - /post-create => post-edit.jade
     - Data: {/*TODO*/}
 * 成员详细介绍：
-    - /user-detail/<Id:MemberId> => member-detail.jade
+    - /members/<Id:MemberId> => member-detail.jade
     - Data: {/*TODO*/}
 * 成员登陆：
     - /admin => (not login) admin-login.jade
