@@ -1,4 +1,4 @@
-## Views:
+A## Views:
 * 首页：
     - / => home.jade
     - Data: {/*TODO*/}
@@ -44,23 +44,31 @@
     - Responses:
         + 200: [{email, name, content, createTime}]
 * 成员登陆：
-    - POST /login
+    - POST /members/session
     - Data: {name, password}
     - Responses:
         + 200: {result: "success"}
         + 404: {result: "fail", msg: "User is not found."}
         + 400: {result: "fail", msg: "Password is not correct."}
+* 成员登出：
+    - DELETE /members/session
+    - Data: {}
+    - Responses:
+        + 200: {result: "success"}
+        + 401: {result: "fail", msg: "Please login first."}
 * 新建博文
     - POST /posts
     - Data: {title, content, tags}
     - Responses:
         + 200: {id}
+        + 401: {result: "fail", msg: "Please login first."}
         + 400: {result: "fail", msg: "Title|Content|Tags is not correct."}
 * 删除博文
     - DELETE /posts/<String:postId>
     - Data: {}
     - Responses:
         + 200: {result: "success"}
+        + 401: {result: "fail", msg: "Please login first. | You have no privilege."}
         + 404: {result: "fail", msg: "Post is not found."}
 * 修改博文
     - PUT /posts/<String:postId>
@@ -68,6 +76,7 @@
     - Responses:
         + 200: {result: "success"}
         + 400: {result: "fail", msg: "Title|Content|Tags is not correct."}
+        + 401: {result: "fail", msg: "Please login first. | You have no privilege."}
         + 404: {result: "fail", msg: "Post is not found."}
 * 新增成员
     - POST /members
@@ -75,12 +84,14 @@
     - Responses:
         + 200: {id}
         + 400: {result: "fail", msg: "Name|Password|email is not correct."}
+        + 401: {result: "fail", msg: "Please login first. | You have no privilege."}
         + 409: {result: "fail", msg: "Username is existed."}
 * 删除成员
     - DELETE /members/<String:memberId>
     - Data: {}
     - Responses:
         + 200: {result: "fail"}
+        + 401: {result: "fail", msg: "Please login first. | You have no privilege."}
         + 404: {result: "fail", msg: "User is not found."}
 * 修改成员
     - PUT /members/<String:memberId>
@@ -88,9 +99,12 @@
     - Responses:
         + 200: {result: "success"}
         + 400: {result: "fail", msg: "Name|Password|email is not correct."}
+        + 401: {result: "fail", msg: "Please login first. | You have no privilege."}
         + 409: {result: "fail", msg: "Username is existed."}
 * 修改团队介绍
     - PUT /team
     - Data: {introduction, shortIntroduction}
     - Responses:
         + 200: {result: "success"}
+        + 401: {result: "fail", msg: "Please login first. | You have no privilege."}
+        + 401: {result: "fail", msg: "Please login first."}
