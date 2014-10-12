@@ -9,7 +9,8 @@ block content
             a(href='/post-create')= "create blog"
         ul.posts
             each post in posts
-                li.post-info
+                li.post-info()
+                    span.id(hidden, id= post._id)
                     span: a(href="/post-detail/" + post._id)= post.title
                     span= post.createTime
                     button.edit
@@ -17,22 +18,26 @@ block content
 
                     button.delete= 'delete'
 
-    div.team-introduce-edit
-        h2= 'team introduce edit'
-        p= "introduce"
-        textarea.introduce= team.introduce
-        p= "short introduce"
-        input.short-introduce(value=team.shortIntroduce)
+    div.team-edit
+        h2= '团队介绍编辑'
+        p= "详细介绍"
+        textarea.introduction= team.introduction
+        p= "简短介绍"
+        input.short-introduction(value= team.shortIntroduction)
         button.submit= 'save'
 
     if userInfo.isAdmin
         div.members-edit
-            h2= 'members edit'
+            h2= '成员编辑'
             ul.posts
                 each member in members
                     li.member-info
                         span=member.name
                         button.edit= 'edit'
                         button.delete= 'delete'
+            button.add= "新增成员"
+            div.member-edit-wrapper
 
+
+    script(src='/js/admin-dashboard.js')
 

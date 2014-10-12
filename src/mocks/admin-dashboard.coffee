@@ -1,8 +1,8 @@
 posts = require('./list.coffee').posts
 
 team = 
-    introduce: '这个是长的介绍'
-    shortIntroduce: '这个是短的介绍'
+    introduction: '这个是长的介绍'
+    shortIntroduction: '这个是短的介绍'
 
 members = require('./members.coffee').members
 

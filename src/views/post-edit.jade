@@ -7,8 +7,14 @@ block content
             input(name= title, value= post.title)
         else 
             input(name= title)
+    fieldset.post-tag
+        span= '标签'
+        if post
+            input(value= post.tags.toString())
+        else 
+            input
     fieldset.post-content
-        span= '内容'
+        p= '内容'
         if post
             textarea= post.content
         else 
@@ -16,4 +22,8 @@ block content
     button.submit= '保存'
 
     div#comments-wrapper 
+        ul.comments
+        img.comments-loading(src='/assets/images/loading.gif' width=150)
+        button.load-more: a(href='#') Load More.
         
+    script(src='/js/post-edit.js')    

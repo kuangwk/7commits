@@ -4,7 +4,7 @@ config = require "./modules/config.coffee"
 initApp = ->
     clickAndlogin()
 
-clickAndlogin = ()->
+clickAndlogin = ->
     $loginBtn = $('button.submit')
     $wrapper = $('div.login-wrapper')
     $loginBtn.on 'click', (event)->
@@ -19,7 +19,6 @@ clickAndlogin = ()->
             data: userData
             success: (results)->
                 window.location.reload()
-
 
 if not config.testing then initApp()
 

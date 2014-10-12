@@ -63,7 +63,6 @@ addCommentToList = ->
         type: 'POST'
         data: comment
         success: (results)->
-            console.log 'result' + results, comment
             renderComment comment, true
 
 clickToLoadMore = ->

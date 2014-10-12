@@ -23,7 +23,7 @@
 * avatar: String
 * email: String
 * signature: String
-* introdution: String
+* introduction: String
 * isAdmin: {type: Boolean, default: false}
 * showMember: {type: Boolean, default: true}
 

@@ -30,12 +30,6 @@ app.get '/posts/:pageNum', (req, res)->
 app.get '/post-detail/:id', (req, res)->
     res.render 'post-detail', detailMocks
 
-# 获取更多评论
-app.get '/comments/:from/:to', (req, res)->
-    setTimeout ->
-        res.send commentMocks
-    , 1000
-
 # 后台登录页面
 isLogin = false 
 app.get '/admin', (req, res)->
@@ -53,11 +47,23 @@ app.get '/post-create/', (req, res)->
 
 
 # AJAX 
+
+app.get '/comments/:from/:to', (req, res)->
+    setTimeout ->
+        res.send commentMocks
+    , 1000
+
 app.post '/comments/', (req, res)->
     res.send()
 
 app.post '/members/session', (req, res)->
     isLogin = true
+    res.send()
+
+app.delete '/posts/:id', (req, res)->
+    res.send()
+
+app.put '/team', (req, res)->
     res.send()
 
 app.listen 3000, ->
