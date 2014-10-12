@@ -1,0 +1,19 @@
+extends partial/layout
+
+block content
+    fieldset.post-title
+        span= '标题'
+        if post
+            input(name= title, value= post.title)
+        else 
+            input(name= title)
+    fieldset.post-content
+        span= '内容'
+        if post
+            textarea= post.content
+        else 
+            textarea
+    button.submit= '保存'
+
+    div#comments-wrapper 
+        

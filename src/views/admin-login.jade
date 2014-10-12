@@ -1,0 +1,14 @@
+extends partial/layout
+
+block content
+    h1= "登录"
+    div.login-wrapper
+        div.input
+            span.name 用户名:
+            input.username(placeholder='用户名')
+        div.input
+            span.password 密码:
+            input.password(type='password')
+        button.submit 登录
+
+    script(src='/js/admin-login.js')

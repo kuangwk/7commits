@@ -1,0 +1,38 @@
+extends partial/layout
+
+block content
+    link(rel='stylesheet' href='/css/admin-dashboard.css')
+    h1= admin
+    div.posts-edit
+        h2= 'post edit'
+        button.create-post
+            a(href='/post-create')= "create blog"
+        ul.posts
+            each post in posts
+                li.post-info
+                    span: a(href="/post-detail/" + post._id)= post.title
+                    span= post.createTime
+                    button.edit
+                        a(href='/post-edit/' + post._id)= 'edit'
+
+                    button.delete= 'delete'
+
+    div.team-introduce-edit
+        h2= 'team introduce edit'
+        p= "introduce"
+        textarea.introduce= team.introduce
+        p= "short introduce"
+        input.short-introduce(value=team.shortIntroduce)
+        button.submit= 'save'
+
+    if userInfo.isAdmin
+        div.members-edit
+            h2= 'members edit'
+            ul.posts
+                each member in members
+                    li.member-info
+                        span=member.name
+                        button.edit= 'edit'
+                        button.delete= 'delete'
+
+
